@@ -10,18 +10,23 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(janitor)
 library(here)
+library(hexbin)
 ```
 
 ```{r}
 # Read in data
 ces <- read.csv(here("data", "ces3demographics.csv"))
 
+# Clean up data 
 ces_clean <- ces %>% clean_names()
 ```
 
 ```{r}
 # Create scatterplot
 ggplot(data = ces_clean, aes(x = white, y = ces_3_0_score)) +
-  geom_point()
+  geom_hex() +
+  labs(x = "White population (%)",
+       y = "CalEnviroScreen 3.0 score") # I couldn't think of a better name for x axis, but essentially we're trying to show the relationship between ces score and higher percentage of white people per community, right?
 ```
+
 
