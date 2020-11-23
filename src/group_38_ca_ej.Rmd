@@ -19,3 +19,9 @@ ces <- read.csv(here("data", "ces3demographics.csv"))
 ces_clean <- ces %>% clean_names()
 ```
 
+```{r}
+# Create scatterplot
+ggplot(data = ces_clean, aes(x = white, y = ces_3_0_score)) +
+  geom_point()
+```
+
