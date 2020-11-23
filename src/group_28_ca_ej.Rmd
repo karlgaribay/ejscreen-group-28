@@ -25,8 +25,12 @@ ces_clean <- ces %>% clean_names()
 # Create scatterplot
 ggplot(data = ces_clean, aes(x = white, y = ces_3_0_score)) +
   geom_hex() +
-  labs(x = "White population (%)",
-       y = "CalEnviroScreen 3.0 score") # I couldn't think of a better name for x axis, but essentially we're trying to show the relationship between ces score and higher percentage of white people per community, right?
+  labs(x = "White people in community (%)",
+       y = "CalEnviroScreen 3.0 score") + # I couldn't think of a better name for x axis, but essentially we're trying to show the relationship between ces score and higher percentage of white people per community, right?
+
+# Yeah, the higher ces score means the community is more polluted, so there's definitely a negative correlation here. I changed the label for the x axis from "White population (%)" to the above. I think the word "community" makes it a little more straightforward, but you can change it back if you disagree.
+  scale_fill_gradient(low = "darkorchid4", high = "magenta") +
+  theme_bw()
 ```
 
 
